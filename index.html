@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petcare</title>
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Menú superior -->
+    <div id="menu-bar">
+        <a href="#" onclick="showScreen('start-screen')">Inicio</a>
+        <a href="#" onclick="showScreen('form-screen')">Formulario</a>
+        <a href="#" onclick="window.open('https://oetz6z0enunfj3vkxicpha.on.drv.tw/PetCare%20-%20copia/TC.html', '_blank')">Teachable Machine</a>
+        <a href="#" onclick="showDiagnostico()">Diagnósticos</a>
+        <a href="#" onclick="showPasswordPrompt()">Registros</a>
+    </div>
+
+    <!-- Logo que siempre aparece -->
+<img id="left-gif" class="inicio-logo" src="logo.png" alt="Logo de Petcare">
+
+    <!-- Pantalla de inicio: solo esto debe desaparecer en otras secciones -->
+<div id="start-screen" class="screen dancing-script-custom">
+    <h1 class="text-large">Somos Petcare</h1>
+    <p class="text-medium">
+        La implementación de la plataforma tiene como fin la identificación de padecimientos 
+        y condiciones médicas en las mascotas, con el objetivo de contribuir de manera positiva en su bienestar físico.
+    </p>
+</div>
+
+    <!-- Sección de inicio de sesión -->
+    <div id="login-section">
+        <div class="login-container">
+            <div class="login-text">
+                <h2>Inicia Sesión</h2>
+                <form id="login-form" onsubmit="handleLogin(event)">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" required>
+                    
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" required>
+                    
+                    <button type="submit">Ingresar</button>
+                </form>
+            </div>
+            <div id="gif-container">
+                <img src="petcare.gif" alt="GIF">
+            </div>            
+        </div>
+    </div>
+
+    <!-- Pantalla de formulario -->
+    <div id="form-screen" class="screen dancing-script-custom">
+        <h2 class="text-large">Carnet de Identificación</h2>
+        <form id="registration-form">
+            <label for="nombre">Nombre de la Mascota:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="raza">Raza:</label>
+            <input type="text" id="raza" name="raza" required>
+
+            <label for="edad">Edad de la Mascota:</label>
+            <input type="text" id="edad" name="edad" required>
+
+            <label for="adulto">Adulto Responsable:</label>
+            <input type="text" id="adulto" name="adulto" required>
+
+            <label for="telefono">Teléfono de Emergencia:</label>
+            <input type="text" id="telefono" name="telefono" required>
+
+            <button type="submit" class="text-medium">Registrar</button>
+        </form>
+    </div>
+
+    <!-- Pantalla de registros -->
+<div id="records-screen" class="screen dancing-script-custom">
+
+    <h2 class="text-large">Registros Recientes</h2>
+
+    <!-- Contenedor general de registros -->
+    <div id="records-list" class="records-container">
+        <!-- Aquí JS insertará cada registro -->
+    </div>
+
+</div>
+    <!-- Pantalla de diagnósticos -->
+<div id="diagnostico-screen" class="screen dancing-script-custom">
+   
+    <div class="diagnostico">
+        <h3>Cataratas</h3>
+        <ul>
+            <li>Opacidad del cristalino que causa visión borrosa</li>
+            <li>Pueden ser hereditarias o desarrollarse con la edad</li>
+            <li><strong>Síntomas:</strong> Pupilas blancas o grisáceas, dificultad para ver</li>
+            <li><strong>Tratamiento:</strong> Cirugía de extracción del cristalino</li>
+        </ul>
+    </div>
+
+    <div class="diagnostico">
+        <h3>Glaucoma</h3>
+        <ul>
+            <li>Aumento de la presión intraocular</li>
+            <li>Puede ser primario o secundario</li>
+            <li><strong>Síntomas:</strong> Ojos rojos, dolor, visión reducida</li>
+            <li><strong>Tratamiento:</strong> Medicamentos y cirugía en casos severos</li>
+        </ul>
+    </div>
+
+    <div class="diagnostico">
+        <h3>Conjuntivitis</h3>
+        <ul>
+            <li>Inflamación de la conjuntiva</li>
+            <li>Puede ser viral, bacteriana o alérgica</li>
+            <li><strong>Síntomas:</strong> Enrojecimiento, secreción, hinchazón</li>
+            <li><strong>Tratamiento:</strong> Gotas antibióticas y limpieza ocular</li>
+        </ul>
+    </div>
+
+    <div class="diagnostico">
+        <h3>Uveítis</h3>
+        <ul>
+            <li>Inflamación de la capa media del ojo</li>
+            <li>Puede indicar enfermedades más graves</li>
+            <li><strong>Síntomas:</strong> Dolor, sensibilidad a la luz</li>
+            <li><strong>Tratamiento:</strong> Antinflamatorios y tratar la causa</li>
+        </ul>
+    </div>
+
+    <p class="nota">
+        <strong>Nota importante:</strong> Esta información es solo orientativa.
+        Siempre consulte a un veterinario para un diagnóstico y tratamiento adecuado.
+    </p>
+</div>
+
+    <!-- MODAL CONTRASEÑA -->
+<div id="password-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closePasswordModal()">×</span>
+
+        <h3>Ingrese la Contraseña</h3>
+
+        <form id="password-form">
+            <input type="password" id="password-input" placeholder="Contraseña" required>
+            <button type="submit">Acceder</button>
+        </form>
+
+        <p id="error-message" style="display:none; color:red; margin-top:10px;">
+            Contraseña incorrecta, inténtelo de nuevo.
+        </p>
+    </div>
+</div>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>
